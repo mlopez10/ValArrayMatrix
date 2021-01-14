@@ -32,6 +32,16 @@ public:
     Matrix& operator*=(const Matrix &rhs);
     Matrix transpose();
 
+    // Scalar Math
+    Matrix operator+(const double &rhs);
+    Matrix& operator+=(const double & rhs);
+    Matrix operator-(const double &rhs);
+    Matrix& operator-=(const double &rhs);
+    Matrix operator*(const double &rhs);
+    Matrix& operator*=(const double &rhs);
+    Matrix operator/(const double &rhs);
+    Matrix& operator/=(const double &rhs);
+
     //accessors
     double& operator()(unsigned row, unsigned col);
     const double& operator()(unsigned row, unsigned col) const;
@@ -109,6 +119,50 @@ Matrix Matrix::transpose()
         }
     }
     return result;
+}
+
+Matrix Matrix::operator+(const double &rhs) 
+{
+    return Matrix(m_rows, m_cols, m_matrix + rhs);
+}
+
+Matrix& Matrix::operator+=(const double &rhs) 
+{
+    (*this) = (*this) + rhs;
+    return *this;
+}
+
+Matrix Matrix::operator-(const double &rhs) 
+{
+    return Matrix(m_rows, m_cols, m_matrix - rhs);
+}
+
+Matrix& Matrix::operator-=(const double &rhs) 
+{
+    (*this) = (*this) - rhs;
+    return *this;
+}
+
+Matrix Matrix::operator*(const double &rhs) 
+{
+    return Matrix(m_rows, m_cols, m_matrix * rhs);
+}
+
+Matrix& Matrix::operator*=(const double &rhs) 
+{
+    (*this) = (*this) * rhs;
+    return *this;
+}
+
+Matrix Matrix::operator/(const double &rhs) 
+{
+    return Matrix(m_rows, m_cols, m_matrix / rhs);
+}
+
+Matrix& Matrix::operator/=(const double &rhs) 
+{
+    (*this) = (*this) / rhs;
+    return *this;
 }
 
 void Matrix::PrintMatrix() 
